@@ -38,6 +38,12 @@ public class TransactionController {
         return "transactions/list";
     }
 
+    @GetMapping("/{id}")
+    public String details(@PathVariable Long id, Model model, Principal principal) {
+        model.addAttribute("transaction", transactionService.getOwned(id, principal.getName()));
+        return "transactions/details";
+    }
+
     @GetMapping("/new")
     public String newForm(Model model) {
         model.addAttribute("transaction", new Transaction());

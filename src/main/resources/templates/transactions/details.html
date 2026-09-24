@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Buchungsdetails</title>
+</head>
+<body>
+
+<h1>Buchungsdetails</h1>
+
+<p><strong>Datum:</strong> <span th:text="${transaction.bookingDate}"></span></p>
+<p><strong>Typ:</strong> <span th:text="${transaction.type}"></span></p>
+<p><strong>Kategorie:</strong> <span th:text="${transaction.category.name}"></span></p>
+<p><strong>Betrag:</strong> <span th:text="${transaction.amount}"></span></p>
+<p><strong>Beschreibung:</strong> <span th:text="${transaction.description}"></span></p>
+
+<a th:href="@{/transactions/{id}/edit(id=${transaction.id})}">Bearbeiten</a>
+<a href="/transactions">Zurück</a>
+
+</body>
+</html>
