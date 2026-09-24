@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meine Buchungen</title>
+</head>
+<body>
+
+<h1>Meine Buchungen</h1>
+
+<a href="/transactions/new">+ Neue Buchung</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Datum</th>
+        <th>Typ</th>
+        <th>Kategorie</th>
+        <th>Betrag</th>
+        <th>Beschreibung</th>
+        <th>Aktionen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="t : ${transactions}">
+        <td th:text="${t.bookingDate}"></td>
+        <td th:text="${t.type}"></td>
+        <td th:text="${t.category.name}"></td>
+        <td th:text="${t.amount}"></td>
+        <td th:text="${t.description}"></td>
+        <td>
+            <a th:href="@{/transactions/{id}/edit(id=${t.id})}">Bearbeiten</a>
+            <a th:href="@{/transactions/{id}/delete(id=${t.id})}">Löschen</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
